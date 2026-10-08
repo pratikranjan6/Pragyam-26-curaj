@@ -73,8 +73,87 @@ export default function IntroPreloader() {
       <div ref={bottomRef} className="intro-panel intro-bottom" />
 
       <div ref={contentRef} className="absolute inset-0 flex flex-col items-center justify-center gap-4 px-6 text-center">
-        <div ref={logoRef} className="opacity-0">
-          <Image src="/images/pragyam-logo.png" alt="" width={84} height={84} priority className="h-20 w-20 drop-shadow-[0_0_20px_rgba(168,85,247,0.5)]" />
+        <div ref={logoRef} className="relative flex items-center justify-center opacity-0 mb-3">
+          {/* IIT Bombay Techfest-inspired dashing white semicircle loading ring */}
+          <div className="pointer-events-none absolute -inset-8 sm:-inset-10 flex items-center justify-center">
+            <svg
+              className="h-full w-full animate-[spin_2.2s_linear_infinite]"
+              viewBox="0 0 200 200"
+              fill="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <filter id="tf-white-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Primary Glowing White Semicircle (180-deg arc) */}
+              <path
+                d="M 24 100 A 76 76 0 0 1 176 100"
+                stroke="#ffffff"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                filter="url(#tf-white-glow)"
+              />
+
+              {/* Leading glowing node at semicircle tip */}
+              <circle
+                cx="176"
+                cy="100"
+                r="3.5"
+                fill="#ffffff"
+                filter="url(#tf-white-glow)"
+              />
+
+              {/* Concentric Dashed White Semicircle Arc (dashing tech detail) */}
+              <path
+                d="M 14 100 A 86 86 0 0 1 186 100"
+                stroke="rgba(255, 255, 255, 0.75)"
+                strokeWidth="1.5"
+                strokeDasharray="6 8"
+                strokeLinecap="round"
+                filter="url(#tf-white-glow)"
+              />
+            </svg>
+          </div>
+
+          {/* Secondary counter-rotating fine dashed telemetry arc */}
+          <div className="pointer-events-none absolute -inset-5 sm:-inset-7 flex items-center justify-center">
+            <svg
+              className="h-full w-full animate-[spin_4s_linear_infinite_reverse]"
+              viewBox="0 0 200 200"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M 36 100 A 64 64 0 0 1 164 100"
+                stroke="rgba(255, 255, 255, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="4 8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          {/* Ambient fiery orange glow behind the logo */}
+          <div className="absolute inset-1 rounded-full bg-orange-500/25 blur-xl animate-pulse" />
+
+          {/* Clean Central Metallic 3D P Badge - 100% transparent background, no outer circle border */}
+          <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center">
+            <Image
+              src="/images/pragyam-p-mark.png"
+              alt="Pragyam 2.0"
+              width={120}
+              height={120}
+              priority
+              className="h-full w-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.7)]"
+            />
+          </div>
         </div>
         <p data-stagger className="font-display text-5xl leading-none text-ink opacity-0 sm:text-7xl">
           Pragyam <span className="text-orange">2.0</span>

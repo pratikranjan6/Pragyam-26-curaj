@@ -31,8 +31,9 @@ export default function Footer() {
         <div className="relative grid gap-10 md:grid-cols-12">
           <div className="md:col-span-5">
             <div className="flex items-center gap-3">
-              <span className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full border border-orange-500/40 bg-black/60 shadow-[0_0_20px_rgba(255,122,26,0.35)]">
-                <Image src="/images/pragyam-p-logo.png" alt="Pragyam" width={44} height={44} className="h-full w-full object-cover" />
+              <span className="relative flex h-12 w-12 items-center justify-center transition-transform hover:scale-105">
+                <span className="absolute inset-0 rounded-full bg-orange-500/20 blur-md" />
+                <Image src="/images/pragyam-p-mark.png" alt="Pragyam" width={44} height={44} className="relative h-10 w-10 object-contain drop-shadow-[0_0_12px_rgba(255,122,26,0.55)]" />
               </span>
               <div className="leading-none">
                 <p className="font-display text-3xl glow-text-orange">Pragyam</p>

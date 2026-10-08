@@ -42,11 +42,11 @@ export default function Home() {
               <WaveRule
                 icon={
                   <Image
-                    src="/images/pragyam-p-logo.png"
+                    src="/images/pragyam-p-mark.png"
                     alt=""
                     width={28}
                     height={28}
-                    className="h-7 w-7 rounded-full object-cover shadow-[0_0_10px_rgba(249,115,22,0.4)]"
+                    className="h-7 w-7 object-contain drop-shadow-[0_0_8px_rgba(249,115,22,0.6)]"
                   />
                 }
               />

@@ -100,16 +100,85 @@ export default function PageTransition({ children }: { children: ReactNode }) {
     <>
       {children}
       <div ref={overlayRef} aria-hidden className="pt-overlay">
-        <div ref={sunRef} className="pt-sun">
-          <div className="pt-ring pt-ring-a" />
-          <div className="pt-ring pt-ring-b" />
-          <div className="pt-disc overflow-hidden">
+        <div ref={sunRef} className="pt-sun relative flex flex-col items-center justify-center">
+          {/* IIT Bombay Techfest-inspired dashing white semicircle loading ring */}
+          <div className="pointer-events-none absolute -inset-8 flex items-center justify-center">
+            <svg
+              className="h-full w-full animate-[spin_2s_linear_infinite]"
+              viewBox="0 0 200 200"
+              fill="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <filter id="pt-white-glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2.5" result="blur" />
+                  <feMerge>
+                    <feMergeNode in="blur" />
+                    <feMergeNode in="SourceGraphic" />
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Primary Glowing White Semicircle (180 deg) */}
+              <path
+                d="M 24 100 A 76 76 0 0 1 176 100"
+                stroke="#ffffff"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                filter="url(#pt-white-glow)"
+              />
+
+              {/* Leading glowing white tip */}
+              <circle
+                cx="176"
+                cy="100"
+                r="3.5"
+                fill="#ffffff"
+                filter="url(#pt-white-glow)"
+              />
+
+              {/* Concentric Dashed White Semicircle Arc */}
+              <path
+                d="M 14 100 A 86 86 0 0 1 186 100"
+                stroke="rgba(255, 255, 255, 0.75)"
+                strokeWidth="1.5"
+                strokeDasharray="6 8"
+                strokeLinecap="round"
+                filter="url(#pt-white-glow)"
+              />
+            </svg>
+          </div>
+
+          {/* Secondary counter-rotating fine dashed telemetry arc */}
+          <div className="pointer-events-none absolute -inset-5 flex items-center justify-center">
+            <svg
+              className="h-full w-full animate-[spin_3.5s_linear_infinite_reverse]"
+              viewBox="0 0 200 200"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M 36 100 A 64 64 0 0 1 164 100"
+                stroke="rgba(255, 255, 255, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="4 8"
+                strokeLinecap="round"
+              />
+            </svg>
+          </div>
+
+          {/* Ambient fiery orange glow behind the logo */}
+          <div className="absolute inset-2 rounded-full bg-orange-500/25 blur-2xl animate-pulse" />
+
+          {/* New metallic 3D P badge logo - no outer circle border */}
+          <div className="relative flex h-24 w-24 sm:h-28 sm:w-28 items-center justify-center">
             <Image
-              src="/images/pragyam-p-logo.png"
-              alt="Loading"
-              width={100}
-              height={100}
-              className="h-full w-full object-cover scale-105"
+              src="/images/pragyam-p-mark.png"
+              alt="Loading Pragyam 2.0"
+              width={120}
+              height={120}
+              priority
+              className="h-full w-full object-contain drop-shadow-[0_0_20px_rgba(249,115,22,0.7)]"
             />
           </div>
         </div>

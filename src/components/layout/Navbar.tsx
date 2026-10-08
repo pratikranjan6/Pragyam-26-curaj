@@ -26,14 +26,16 @@ export default function Navbar() {
       label="Main"
       logo={
         <Link href="/" className="group flex items-center gap-2.5">
-          <div className="relative flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-orange-500/40 bg-black/60 shadow-[0_0_12px_rgba(249,115,22,0.4)] transition-all duration-300 group-hover:scale-105 group-hover:border-orange-400 group-hover:shadow-[0_0_18px_rgba(249,115,22,0.7)]">
+          <div className="relative flex h-9 w-9 shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+            {/* Ambient orange aura behind the metallic P */}
+            <div className="absolute -inset-1 rounded-full bg-orange-500/25 blur-md opacity-70 transition-opacity duration-300 group-hover:opacity-100 group-hover:bg-orange-500/50" />
             <Image
-              src="/images/pragyam-p-logo.png"
+              src="/images/pragyam-p-mark.png"
               alt="Pragyam 2.0"
-              width={36}
-              height={36}
+              width={40}
+              height={40}
               priority
-              className="h-full w-full object-cover"
+              className="relative h-9 w-9 object-contain drop-shadow-[0_0_10px_rgba(249,115,22,0.65)]"
             />
           </div>
           <span className="leading-none">
